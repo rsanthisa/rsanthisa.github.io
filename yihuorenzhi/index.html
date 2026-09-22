@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="一伙人智慧 - 专注于团队协作与组织效能提升的实战智库平台，提供组织架构设计、管理咨询及团队成长解决方案。">
+    <meta name="keywords" content="一伙人智慧, 团队管理, 组织效能, 企业咨询, 协作模式">
+    <title>一伙人智慧-组织效能提升与团队协作实战指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-color: #0f172a;
+            --accent-color: #f59e0b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --border-radius: 12px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .card-1 {
+            bottom: 40px;
+            left: -30px;
+        }
+
+        .card-2 {
+            top: 40px;
+            right: -20px;
+            animation-delay: 2s;
+        }
+
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            background: #dbeafe;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Core Values */
+        .values {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            background: var(--bg-color);
+            transition: transform 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Solutions / Services */
+        .solutions {
+            padding: 5rem 0;
+        }
+
+        .solution-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .solution-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .solution-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .solution-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .solution-visual {
+            background: var(--secondary-color);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+            position: relative;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Insights / Blog */
+        .insights {
+            padding: 5rem 0;
+            background-color: #f1f5f9;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s;
+        }
+
+        .article-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .article-img {
+            height: 200px;
+            background-color: #cbd5e1;
+            position: relative;
+        }
+        
+        .article-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-tag {
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .article-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .article-content p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #94a3b8;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content, .solution-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <span>◆</span> 一伙人智慧
+                </a>
+                <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#home">首页</a>
+                    <a href="#core-values">核心理念</a>
+                    <a href="#solutions">解决方案</a>
+                    <a href="#insights">管理智库</a>
+                    <a href="#contact">联系我们</a>
+                    <a href="#" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">立即咨询</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>打造有战斗力的组织<br>让人才与愿景同频共振</h1>
+                        <p>我们致力于帮助企业解决团队协作痛点，通过系统化的组织设计与文化建设，激活组织效能，实现从“团伙”到“一伙人”的蜕变。</p>
+                        <div class="cta-group">
+                            <a href="#solutions" class="btn btn-primary">探索解决方案</a>
+                            <a href="#insights" class="btn btn-outline" style="margin-left: 10px;">阅读管理智库</a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <h3>200+</h3>
+                                <p>服务企业</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>98%</h3>
+                                <p>客户满意度</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>500+</h3>
+                                <p>成功案例</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://picsum.photos/seed/teamwork/600/400" alt="团队协作与沟通场景">
+                        <div class="floating-card card-1">
+                            <div class="icon-box">✓</div>
+                            <div>
+                                <strong>效率提升</strong>
+                                <div style="font-size: 0.8rem; color: #666;">协作效率提升 40%</div>
+                            </div>
+                        </div>
+                        <div class="floating-card card-2">
+                            <div class="icon-box">★</div>
+                            <div>
+                                <strong>文化共识</strong>
+                                <div style="font-size: 0.8rem; color: #666;">团队凝聚力增强</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section class="values" id="core-values">
+            <div class="container">
+                <div class="section-title">
+                    <h2>我们的核心价值观</h2>
+                    <p>一伙人智慧不仅提供工具，更传递一种管理哲学，帮助组织在不确定的环境中寻找确定性。</p>
+                </div>
+                <div class="values-grid">
+                    <article class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h3>共同愿景</h3>
+                        <p>超越单纯的利益共同体，建立精神层面的共识，让每一位成员都认同并为了同一个目标全力以赴。</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>深度信任</h3>
+                        <p>打破部门墙与层级隔阂，构建心理安全感，让团队敢于沟通、乐于分享，形成高效的信息流动。</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-icon">🚀</div>
+                        <h3>敏捷成长</h3>
+                        <p>倡导持续学习与快速迭代，在实战中试错，在反馈中进化，确保组织始终具备市场竞争力。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solutions -->
+        <section class="solutions" id="solutions">
+            <div class="container">
+                <div class="section-title">
+                    <h2>组织效能提升方案</h2>
+                    <p>针对不同发展阶段的企业，提供定制化的组织诊断与优化服务。</p>
+                </div>
+                
+                <div class="solution-tabs">
+                    <button class="tab-btn active">团队建设</button>
+                    <button class="tab-btn">组织架构</button>
+                    <button class="tab-btn">文化落地</button>
+                </div>
+
+                <div class="solution-content">
+                    <div class="solution-list">
+                        <div class="solution-item">
+                            <div class="icon-box" style="width: 36px; height: 36px; font-size: 1rem;">1</div>
+                            <div>
+                                <h4>团队角色定位与分工</h4>
+                                <p>基于贝尔宾团队角色理论，帮助企业识别人才特质，优化岗位配置，避免职能重叠或空缺。</p>
+                            </div>
+                        </div>
+                        <div class="solution-item">
+                            <div class="icon-box" style="width: 36px; height: 36px; font-size: 1rem;">2</div>
+                            <div>
+                                <h4>高效沟通机制建立</h4>
+                                <p>设计扁平化的沟通流程与会议制度，消除信息孤岛，确保决策快速传达与执行。</p>
+                            </div>
+                        </div>
+                        <div class="solution-item">
+                            <div class="icon-box" style="width: 36px; height: 36px; font-size: 1rem;">3</div>
+                            <div>
+                                <h4>绩效激励体系设计</h4>
+                                <p>构建以结果为导向、兼顾过程与成长的多元化激励机制，激发员工内在驱动力。</p>
+                            </div>
+                        </div>
+                        <div class="solution-item">
+                            <div class="icon-box" style="width: 36px; height: 36px; font-size: 1rem;">4</div>
+                            <div>
+                                <h4>领导力梯队培养</h4>
+                                <p>针对中高层管理者进行赋能培训，提升其识人用人、团队辅导及战略执行能力。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="solution-visual">
+                        <h3 style="margin-bottom: 2rem; font-size: 1.5rem;">组织效能提升路径</h3>
+                        <div class="process-step">
+                            <div class="step-num">1</div>
+                            <div>
+                                <strong>诊断现状</strong>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">深入调研，发现组织病灶</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-num">2</div>
+                            <div>
+                                <strong>顶层设计</strong>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">明确目标，规划变革蓝图</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-num">3</div>
+                            <div>
+                                <strong>敏捷落地</strong>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">试点先行，快速迭代优化</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-num">4</div>
+                            <div>
+                                <strong>长效机制</strong>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">固化流程，持续赋能成长</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights / Blog -->
+        <section class="insights" id="insights">
+            <div class="container">
+                <div class="section-title">
+                    <h2>管理智库与观点</h2>
+                    <p>分享关于团队管理、组织变革与领导力发展的深度思考。</p>
+                </div>
+                <div class="insights-grid">
+                    <article class="article-card">
+                        <div class="article-img">
+                            <img src="https://picsum.photos/seed/meeting/400/300" alt="团队会议">
+                        </div>
+                        <div class="article-content">
+                            <span class="article-tag">团队建设</span>
+                            <h3>如何避免团队会议陷入低效内卷？</h3>
+                            <p>会议是组织的血液，但如何让血液流动起来而非凝固？本文探讨高效会议的标准与实操技巧。</p>
+                            <a href="#" class="read-more">阅读全文 →</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-img">
+                            <img src="https://picsum.photos/seed/strategy/400/300" alt="战略规划">
+                        </div>
+                        <div class="article-content">
+                            <span class="article-tag">战略管理</span>
+                            <h3>从“团伙”到“一伙人”：企业文化的核心驱动力</h3>
+                            <p>探讨如何通过价值观的渗透，将松散的利益结合转化为紧密的命运共同体。</p>
+                            <a href="#" class="read-more">阅读全文 →</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <div class="article-img">
+                            <img src="https://picsum.photos/seed/leader/400/300" alt="领导力">
+                        </div>
+                        <div class="article-content">
+                            <span class="article-tag">领导力</span>
+                            <h3>中层管理者：连接战略与执行的桥梁</h3>
+                            <p>分析中层管理者在组织变革中的关键作用，以及如何提升其承上启下的管理能力。</p>
+                            <a href="#" class="read-more">阅读全文 →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="contact">
+            <div class="container">
+                <h2>准备好升级你的团队了吗？</h2>
+                <p>无论您是初创团队还是成熟企业，我们都将为您提供最适合的组织发展建议。</p>
+                <a href="#" class="btn" style="background: white; color: var(--primary-color);">预约免费诊断</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>一伙人智慧</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.8; max-width: 300px;">
+                        专注组织效能提升，致力于帮助中国企业打造高绩效团队。我们相信，只有真正团结的“一伙人”，才能应对未来的挑战。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>服务项目</h4>
+                    <ul>
+                        <li><a href="#">组织架构设计</a></li>
+                        <li><a href="#">团队文化建设</a></li>
+                        <li><a href="#">领导力培训</a></li>
+                        <li><a href="#">绩效管理体系</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>资源中心</h4>
+                    <ul>
+                        <li><a href="#">管理白皮书</a></li>
+                        <li><a href="#">行业案例分析</a></li>
+                        <li><a href="#">在线课程</a></li>
+                        <li><a href="#">工具模板下载</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>电话: 400-123-4567</li>
+                        <li>邮箱: contact@yihueren.com</li>
+                        <li>地址: 北京市朝阳区科技园区A座</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 一伙人智慧 版权所有 | 京ICP备12345678号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Simple Tab Interaction
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const solutionItems = document.querySelectorAll('.solution-item');
+        const solutionVisual = document.querySelector('.solution-visual');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // In a real app, this would swap content based on the tab
+                // For this demo, we just highlight the effect
+                solutionItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                    }, 300);
+                });
+            });
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+                      </html>
