@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="龙虎门游戏官方攻略站，提供最新龙虎门手游、端游下载资源，深度玩法解析、角色强度排行及最新版本更新公告。">
+    <meta name="keywords" content="龙虎门游戏,龙虎门手游,王道漫画改编游戏,动作格斗,武侠手游下载">
+    <title>龙虎门游戏-官方正版下载与深度攻略指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #b71c1c; /* 经典的武侠红 */
+            --secondary-color: #d32f2f;
+            --accent-color: #ffd700; /* 金色，代表王道与荣耀 */
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-muted: #b0bec5;
+            --spacing-unit: 8px;
+            --border-radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-download-sm {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .btn-download-sm:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(to bottom, rgba(18, 18, 18, 0.3), var(--dark-bg)), 
+                        url('https://picsum.photos/seed/kungfu/1600/900.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn Up 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 15px rgba(183, 28, 28, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(183, 28, 28, 0.6);
+        }
+
+        /* 通用区块样式 */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 16px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* 游戏特色 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border: 1px solid #333;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+            color: var(--accent-color);
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* 角色展示 */
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .char-card {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            group: cursor-pointer;
+        }
+
+        .char-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .char-card:hover .char-img {
+            transform: scale(1.1);
+        }
+
+        .char-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .char-card:hover .char-overlay {
+            transform: translateY(0);
+        }
+
+        .char-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .char-title {
+            font-size: 12px;
+            color: var(--accent-color);
+        }
+
+        /* 更新日志 */
+        .update-list {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .update-item {
+            display: flex;
+            border-bottom: 1px solid #333;
+            padding: 20px;
+            align-items: center;
+        }
+
+        .update-item:last-child {
+            border-bottom: none;
+        }
+
+        .update-date {
+            background-color: #333;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            margin-right: 20px;
+            min-width: 80px;
+        }
+
+        .update-date .day {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .update-date .month {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .update-content h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .update-content p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* 版本对比/下载 */
+        .download-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://picsum.photos/seed/tech/1600/600.jpg') center/cover fixed;
+            text-align: center;
+        }
+
+        .download-box {
+            background: rgba(30, 30, 30, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #444;
+        }
+
+        .system-req {
+            margin-top: 20px;
+            text-align: left;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .system-req strong {
+            color: white;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #0a0a0a;
+            border-top: 1px solid #333;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 12px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .nav-links { display: none; } /* 简化处理，移动端隐藏菜单 */
+            .section-header { flex-direction: column; align-items: flex-start; }
+            .cta-group { flex-direction: column; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <span>龙虎门</span>游戏
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#features">游戏特色</a></li>
+                    <li><a href="#characters">角色图鉴</a></li>
+                    <li><a href="#news">最新资讯</a></li>
+                    <li><a href="#download">下载专区</a></li>
+                </ul>
+            </nav>
+            <a href="#download" class="btn-download-sm">立即下载</a>
+        </div>
+    </header>
+
+    <!-- 首屏 Hero -->
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>王者归来，热血重燃</h1>
+                <p>基于经典港漫《龙虎门》正版授权，还原王道热血格斗体验。顶级画面引擎，百人同屏乱斗，重温一代宗师的风采。</p>
+                <div class="cta-group">
+                    <a href="#download" class="btn btn-primary">免费下载游戏</a>
+                    <a href="#features" class="btn btn-secondary">查看游戏特色</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏特色 -->
+        <section id="features" class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>游戏核心特色</h2>
+                    <p>不仅是复刻，更是超越</p>
+                </div>
+            </div>
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">⚔️</div>
+                    <h3>极致格斗体验</h3>
+                    <p>深度还原原著招式，拳拳到肉，打击感十足。连招系统自由搭配，策略与操作并重。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🌏</div>
+                    <h3>全真港漫世界</h3>
+                    <p>从石破天到王小虎，从白山虎到火云邪神。完整复刻经典场景与剧情，沉浸式体验。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>宗师养成系统</h3>
+                    <p>修炼金钟罩、铁布衫，突破武学瓶颈。收集绝世武功秘籍，打造属于你的最强门派。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>百人同屏乱斗</h3>
+                    <p>万人同服，万人同屏。帮派战、跨服竞技，在宏大的江湖中争夺武林盟主之位。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 角色展示 -->
+        <section id="characters" class="container" style="background-color: #161616; border-radius: 12px; padding: 40px;">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>经典角色图鉴</h2>
+                    <p>集结武林豪杰，共闯龙虎门</p>
+                </div>
+            </div>
+            <div class="characters-grid">
+                <div class="char-card">
+                    <img src="https://picsum.photos/seed/stone/300/400" alt="石破天" class="char-img">
+                    <div class="char-overlay">
+                        <div class="char-name">石破天</div>
+                        <div class="char-title">主角 / 龙虎门</div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <img src="https://picsum.photos/seed/wang/300/400" alt="王小虎" class="char-img">
+                    <div class="char-overlay">
+                        <div class="char-name">王小虎</div>
+                        <div class="char-title">主角 / 飞天虎</div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <img src="https://picsum.photos/seed/white/300/400" alt="白山虎" class="char-img">
+                    <div class="char-overlay">
+                        <div class="char-name">白山虎</div>
+                        <div class="char-title">主角 / 虎啸门</div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <img src="https://picsum.photos/seed/fire/300/400" alt="火云邪神" class="char-img">
+                    <div class="char-overlay">
+                        <div class="char-name">火云邪神</div>
+                        <div class="char-title">BOSS / 绝世高手</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 最新资讯 -->
+        <section id="news" class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>最新动态与更新</h2>
+                    <p>关注官方公告，获取第一手福利</p>
+                </div>
+                <a href="#" style="color: var(--primary-color); font-size: 14px;">查看更多 &rarr;</a>
+            </div>
+            <div class="update-list">
+                <div class="update-item">
+                    <div class="update-date">
+                        <span class="day">12</span>
+                        <span class="month">10月</span>
+                    </div>
+                    <div class="update-content">
+                        <h4>[版本更新] 武林盟主争霸赛开启，丰厚奖励等你拿</h4>
+                        <p>全新跨服PVP玩法上线，参与活动更有机会获得限定皮肤。</p>
+                    </div>
+                </div>
+                <div class="update-item">
+                    <div class="update-date">
+                        <span class="day">05</span>
+                        <span class="month">10月</span>
+                    </div>
+                    <div class="update-content">
+                        <h4>[活动预告] 重温经典，登录送神装</h4>
+                        <p>10月5日至10月12日，全服玩家登录即可领取绝版时装。</p>
+                    </div>
+                </div>
+                <div class="update-item">
+                    <div class="update-date">
+                        <span class="day">28</span>
+                        <span class="month">09月</span>
+                    </div>
+                    <div class="update-content">
+                        <h4>[维护公告] 9月28日例行停机维护通知</h4>
+                        <p>修复部分已知BUG，优化战斗流畅度，预计停机2小时。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 下载专区 -->
+        <section id="download" class="download-section">
+            <div class="container">
+                <div class="download-box">
+                    <h2 style="margin-bottom: 10px;">立即开始你的江湖之旅</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 30px;">支持 iOS / Android / PC 多端互通</p>
+                    
+                    <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 30px;">
+                        <button class="btn btn-primary" style="padding: 10px 24px; font-size: 14px;">
+                            📲 Android 下载
+                        </button>
+                        <button class="btn btn-secondary" style="padding: 10px 24px; font-size: 14px;">
+                            💻 PC 客户端
+                        </button>
+                    </div>
+
+                    <div class="system-req">
+                        <strong>最低配置要求：</strong><br>
+                        Android 5.0+ / iOS 10.0+<br>
+                        4GB RAM 以上
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 -->
+        <section class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>常见问题 (FAQ)</h2>
+                </div>
+            </div>
+            <div style="max-width: 800px;">
+                <details style="background: var(--card-bg); margin-bottom: 10px; padding: 15px; border-radius: 8px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: white;">游戏需要付费吗？</summary>
+                    <p style="margin-top: 10px; color: var(--text-muted);">游戏为免费下载，内含部分付费道具，不影响游戏平衡性。</p>
+                </details>
+                <details style="background: var(--card-bg); margin-bottom: 10px; padding: 15px; border-radius: 8px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: white;">如何找回账号？</summary>
+                    <p style="margin-top: 10px; color: var(--text-muted);">请携带注册手机号或绑定邮箱，联系客服进行身份验证找回。</p>
+                </details>
+                <details style="background: var(--card-bg); margin-bottom: 10px; padding: 15px; border-radius: 8px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: white;">支持跨平台游玩吗？</summary>
+                    <p style="margin-top: 10px; color: var(--text-muted);">是的，iOS、Android 和 PC 客户端数据互通，可以与好友一起冒险。</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col" style="flex: 2; min-width: 300px;">
+                    <a href="#" class="logo" style="margin-bottom: 15px;">
+                        <span>龙虎门</span>游戏
+                    </a>
+                    <p style="color: var(--text-muted); font-size: 14px; max-width: 300px;">
+                        致力于为玩家打造最纯正的港漫风格动作手游，还原经典，致敬经典。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">游戏官网</a></li>
+                        <li><a href="#">玩家社区</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="#">客服邮箱</a></li>
+                        <li><a href="#">官方微博</a></li>
+                        <li><a href="#">官方微信</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 龙虎门游戏运营团队. All Rights Reserved. 本站为攻略站，非官方网站。
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
