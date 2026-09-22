@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好看的电影排行榜 - 热门影视推荐与高分佳作精选</title>
+    <meta name="description" content="本站提供最新好看的电影排行榜，涵盖科幻、悬疑、爱情、动作等多种类型。收录IMDb高分电影、豆瓣高分榜单及近期热门院线佳作，助你快速找到值得观看的优质影片。">
+    <meta name="keywords" content="好看的电影排行榜,电影推荐,高分电影,豆瓣高分电影,IMDb排行榜,在线电影">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e50914;
+            --secondary-color: #221f1f;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+        }
+
+        .search-box input {
+            padding: 8px 12px;
+            border-radius: 4px 0 0 4px;
+            border: none;
+            outline: none;
+            width: 200px;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/cinema/1920/600') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: #b20710;
+            transform: translateY(-2px);
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        /* Section Styles */
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 5px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title a {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        .section-title a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Top 10 Ranking */
+        .ranking-section {
+            margin-bottom: 60px;
+        }
+
+        .ranking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .rank-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .rank-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .rank-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            z-index: 2;
+        }
+
+        .rank-badge.top-3 {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .rank-poster {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .rank-info {
+            padding: 15px;
+        }
+
+        .rank-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .rank-meta {
+            font-size: 12px;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rating {
+            color: #f5c518;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        /* Grid Layout for Categories */
+        .category-section {
+            margin-bottom: 60px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .category-content {
+            padding: 15px;
+        }
+
+        .category-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .category-list li {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .category-list li:hover {
+            color: var(--primary-color);
+        }
+
+        /* Latest Updates */
+        .update-section {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 60px;
+        }
+
+        .update-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .update-table th, .update-table td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .update-table th {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .update-table td {
+            font-size: 15px;
+        }
+
+        .update-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background-color: #eee;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .tag.new {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #aaa;
+            padding: 60px 0 20px;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 13px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ranking-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">影迷<span>指南</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">最新上映</a></li>
+                    <li><a href="#">高分榜单</a></li>
+                    <li><a href="#">经典老片</a></li>
+                    <li><a href="#">追剧日历</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索电影、导演或演员...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>发现你的下一部心头好</h1>
+                <p>汇集全球最新上映与经典高分佳作，为您精选最值得观看的电影排行榜。</p>
+                <a href="#top-10" class="btn">查看排行榜</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Filters -->
+            <div class="filters">
+                <button class="filter-btn active">全部</button>
+                <button class="filter-btn">科幻</button>
+                <button class="filter-btn">悬疑</button>
+                <button class="filter-btn">动作</button>
+                <button class="filter-btn">剧情</button>
+                <button class="filter-btn">爱情</button>
+                <button class="filter-btn">动画</button>
+            </div>
+
+            <!-- Top 10 Ranking -->
+            <section id="top-10" class="ranking-section">
+                <div class="section-title">
+                    <h2>本周好看的电影排行榜</h2>
+                    <a href="#">查看完整榜单 &rarr;</a>
+                </div>
+                <div class="ranking-grid">
+                    <!-- Item 1 -->
+                    <article class="rank-card">
+                        <span class="rank-badge top-3">1</span>
+                        <img src="https://picsum.photos/seed/movie1/300/450" alt="星际穿越" class="rank-poster">
+                        <div class="rank-info">
+                            <h3 class="rank-title">星际穿越</h3>
+                            <div class="rank-meta">
+                                <span class="rating">★ 9.3</span>
+                                <span class="tag">科幻</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Item 2 -->
+                    <article class="rank-card">
+                        <span class="rank-badge top-3">2</span>
+                        <img src="https://picsum.photos/seed/movie2/300/450" alt="肖申克的救赎" class="rank-poster">
+                        <div class="rank-info">
+                            <h3 class="rank-title">肖申克的救赎</h3>
+                            <div class="rank-meta">
+                                <span class="rating">★ 9.5</span>
+                                <span class="tag">剧情</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Item 3 -->
+                    <article class="rank-card">
+                        <span class="rank-badge top-3">3</span>
+                        <img src="https://picsum.photos/seed/movie3/300/450" alt="盗梦空间" class="rank-poster">
+                        <div class="rank-info">
+                            <h3 class="rank-title">盗梦空间</h3>
+                            <div class="rank-meta">
+                                <span class="rating">★ 9.2</span>
+                                <span class="tag">悬疑</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Item 4 -->
+                    <article class="rank-card">
+                        <span class="rank-badge">4</span>
+                        <img src="https://picsum.photos/seed/movie4/300/450" alt="教父" class="rank-poster">
+                        <div class="rank-info">
+                            <h3 class="rank-title">教父</h3>
+                            <div class="rank-meta">
+                                <span class="rating">★ 9.1</span>
+                                <span class="tag">犯罪</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Item 5 -->
+                    <article class="rank-card">
+                        <span class="rank-badge">5</span>
+                        <img src="https://picsum.photos/seed/movie5/300/450" alt="蝙蝠侠：黑暗骑士" class="rank-poster">
+                        <div class="rank-info">
+                            <h3 class="rank-title">蝙蝠侠：黑暗骑士</h3>
+                            <div class="rank-meta">
+                                <span class="rating">★ 9.0</span>
+                                <span class="tag">动作</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Item 6 -->
+                    <article class="rank-card">
+                        <span class="rank-badge">6</span>
+                        <img src="https://picsum.photos/seed/movie6/300/450" alt="阿甘正传" class="rank-poster">
+                        <div class="rank-info">
+                            <h3 class="rank-title">阿甘正传</h3>
+                            <div class="rank-meta">
+                                <span class="rating">★ 8.9</span>
+                                <span class="tag">剧情</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Item 7 -->
+                    <article class="rank-card">
+                        <span class="rank-badge">7</span>
+                        <img src="https://picsum.photos/seed/movie7/300/450" alt="泰坦尼克号" class="rank-poster">
+                        <div class="rank-info">
+                            <h3 class="rank-title">泰坦尼克号</h3>
+                            <div class="rank-meta">
+                                <span class="rating">★ 8.8</span>
+                                <span class="tag">爱情</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Item 8 -->
+                    <article class="rank-card">
+                        <span class="rank-badge">8</span>
+                        <img src="https://picsum.photos/seed/movie8/300/450" alt="楚门的世界" class="rank-poster">
+                        <div class="rank-info">
+                            <h3 class="rank-title">楚门的世界</h3>
+                            <div class="rank-meta">
+                                <span class="rating">★ 8.8</span>
+                                <span class="tag">喜剧</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Categories -->
+            <section class="category-section">
+                <div class="section-title">
+                    <h2>热门电影分类</h2>
+                </div>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <img src="https://picsum.photos/seed/scifi/400/250" alt="科幻电影" class="category-img">
+                        <div class="category-content">
+                            <h3 class="category-title">科幻电影</h3>
+                            <ul class="category-list">
+                                <li>星际穿越</li>
+                                <li>火星救援</li>
+                                <li>银翼杀手2049</li>
+                                <li>降临</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="https://picsum.photos/seed/thriller/400/250" alt="悬疑惊悚" class="category-img">
+                        <div class="category-content">
+                            <h3 class="category-title">悬疑惊悚</h3>
+                            <ul class="category-list">
+                                <li>禁闭岛</li>
+                                <li>致命魔术</li>
+                                <li>七宗罪</li>
+                                <li>看不见的客人</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="https://picsum.photos/seed/romance/400/250" alt="爱情电影" class="category-img">
+                        <div class="category-content">
+                            <h3 class="category-title">爱情电影</h3>
+                            <ul class="category-list">
+                                <li>爱在黎明破晓前</li>
+                                <li>爱乐之城</li>
+                                <li>泰坦尼克号</li>
+                                <li>时空恋旅人</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="https://picsum.photos/seed/animation/400/250" alt="动画电影" class="category-img">
+                        <div class="category-content">
+                            <h3 class="category-title">动画电影</h3>
+                            <ul class="category-list">
+                                <li>千与千寻</li>
+                                <li>寻梦环游记</li>
+                                <li>疯狂动物城</li>
+                                <li>蜘蛛侠：纵横宇宙</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Updates Table -->
+            <section class="update-section">
+                <div class="section-title">
+                    <h2>最新上映与更新</h2>
+                </div>
+                <table class="update-table">
+                    <thead>
+                        <tr>
+                            <th>电影名称</th>
+                            <th>类型</th>
+                            <th>上映日期</th>
+                            <th>评分</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>奥本海默</td>
+                            <td><span class="tag">传记</span> <span class="tag">剧情</span></td>
+                            <td>2023-07-21</td>
+                            <td><span class="rating">★ 8.9</span></td>
+                            <td><span class="tag new">热映中</span></td>
+                        </tr>
+                        <tr>
+                            <td>芭比</td>
+                            <td><span class="tag">喜剧</span> <span class="tag">奇幻</span></td>
+                            <td>2023-07-21</td>
+                            <td><span class="rating">★ 7.0</span></td>
+                            <td><span class="tag new">热映中</span></td>
+                        </tr>
+                        <tr>
+                            <td>沙丘2</td>
+                            <td><span class="tag">科幻</span> <span class="tag">冒险</span></td>
+                            <td>2024-03-08</td>
+                            <td><span class="rating">★ 8.5</span></td>
+                            <td><span class="tag">已上线</span></td>
+                        </tr>
+                        <tr>
+                            <td>周处除三害</td>
+                            <td><span class="tag">犯罪</span> <span class="tag">动作</span></td>
+                            <td>2023-11-24</td>
+                            <td><span class="rating">★ 8.2</span></td>
+                            <td><span class="tag">已上线</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>影迷指南</h3>
+                    <p>专注于提供最全面、最客观的影视资讯与排行榜单。无论您是想寻找高分经典还是最新热门，这里都能满足您的观影需求。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">电影排行榜</a></li>
+                        <li><a href="#">电视剧集</a></li>
+                        <li><a href="#">电影评分</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>热门分类</h4>
+                    <ul>
+                        <li><a href="#">科幻片</a></li>
+                        <li><a href="#">恐怖片</a></li>
+                        <li><a href="#">爱情片</a></li>
+                        <li><a href="#">动画片</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">联系合作</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 影迷指南 - 好看的电影排行榜. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
