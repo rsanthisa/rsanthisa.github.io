@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="创世兵魂 - 资深FPS游戏战术指南与玩家社区。提供游戏玩法解析、武器装备评测、职业选手教学视频及最新赛事资讯。">
+    <meta name="keywords" content="创世兵魂, 网页游戏, FPS射击, 战术攻略, 武器评测">
+    <title>创世兵魂 - 资深FPS战术攻略与玩家社区</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #00f2ff;
+            --secondary-color: #1a1a2e;
+            --accent-color: #ff2e63;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --bg-dark: #0f0f1a;
+            --bg-card: #16162a;
+            --font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: rgba(15, 15, 26, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-muted);
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-login {
+            background: linear-gradient(45deg, var(--accent-color), #ff6b6b);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 46, 99, 0.4);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(15, 15, 26, 0.7), rgba(15, 15, 26, 0.9)), url('https://picsum.photos/seed/cfps_hero/1920/1080.jpg') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-dark) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--bg-dark);
+            padding: 12px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 2px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 38px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 2px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(0, 242, 255, 0.1);
+        }
+
+        /* 通用 Section 样式 */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .section-more {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* 游戏特色 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* 武器库 */
+        .weapons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .weapon-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            group: hover;
+        }
+
+        .weapon-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .weapon-card:hover .weapon-img {
+            transform: scale(1.05);
+        }
+
+        .weapon-info {
+            padding: 20px;
+        }
+
+        .weapon-category {
+            font-size: 12px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .weapon-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .weapon-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-bar {
+            width: 40px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .stat-fill {
+            height: 100%;
+            background-color: var(--accent-color);
+        }
+
+        .btn-card {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border-radius: 4px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-card:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-dark);
+        }
+
+        /* 玩家社区 */
+        .community-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .article-item {
+            display: flex;
+            gap: 20px;
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            align-items: center;
+        }
+
+        .article-thumb {
+            width: 160px;
+            height: 100px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            flex: 1;
+        }
+
+        .article-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .article-excerpt {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .article-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            gap: 15px;
+        }
+
+        .sidebar-widget {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .widget-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hot-list li {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hot-list a {
+            font-size: 14px;
+            color: var(--text-main);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 70%;
+        }
+
+        .hot-num {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            margin-bottom: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            color: var(--text-muted);
+            display: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #05050a;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 15px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #555;
+            font-size: 13px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .community-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .article-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .article-excerpt {
+                text-align: left;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-outline {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <span>CS</span>创世兵魂
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#features">游戏特色</a></li>
+                    <li><a href="#weapons">武器库</a></li>
+                    <li><a href="#community">玩家社区</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-login">立即登录</a>
+        </div>
+    </header>
+
+    <!-- 首屏 Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>重塑经典<br><span>极致竞技体验</span></h1>
+            <p>深入体验最硬核的FPS战术射击游戏。掌握枪械特性，制定战术配合，在激烈的战场上决胜千里。</p>
+            <div class="hero-btns">
+                <button class="btn-primary">开始游戏</button>
+                <button class="btn-outline">观看攻略</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏特色 -->
+    <section id="features" class="container">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>游戏特色</h2>
+                <p>专为战术射击爱好者打造的沉浸式战场</p>
+            </div>
+            <a href="#" class="section-more">查看更多 &rarr;</a>
+        </div>
+        <div class="features-grid">
+            <article class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>硬核射击手感</h3>
+                <p>经过千次调试的弹道算法与后坐力控制，还原最真实的射击体验，考验玩家的精准度与预瞄能力。</p>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>战术道具系统</h3>
+                <p>丰富的烟雾弹、闪光弹与燃烧瓶，配合掩体机制，让战术博弈成为决定胜负的关键因素。</p>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon">⚔️</div>
+                <h3>职业竞技模式</h3>
+                <p>支持5v5团队竞技、爆破模式与生存挑战，定期举办官方电竞赛事，与全球玩家一较高下。</p>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>个性化定制</h3>
+                <p>海量武器皮肤、角色装扮与涂装系统，打造独一无二的游戏形象，彰显你的个性与实力。</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 武器库 -->
+    <section id="weapons" style="background-color: rgba(255,255,255,0.02);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>武器库</h2>
+                    <p>精通每一把枪械，是成为王牌狙击手的第一步</p>
+                </div>
+                <a href="#" class="section-more">武器评测 &rarr;</a>
+            </div>
+            <div class="weapons-grid">
+                <!-- 武器卡片 1 -->
+                <div class="weapon-card">
+                    <img src="https://picsum.photos/seed/ak47/400/300.jpg" alt="AK-47 战术版" class="weapon-img">
+                    <div class="weapon-info">
+                        <span class="weapon-category">突击步枪</span>
+                        <h3>AK-47 战术版</h3>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 90%;"></div></div>
+                                <span>威力</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 60%;"></div></div>
+                                <span>精准</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 70%;"></div></div>
+                                <span>稳定</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-card">查看详细数据</a>
+                    </div>
+                </div>
+
+                <!-- 武器卡片 2 -->
+                <div class="weapon-card">
+                    <img src="https://picsum.photos/seed/aug/400/300.jpg" alt="AUG 突击步枪" class="weapon-img">
+                    <div class="weapon-info">
+                        <span class="weapon-category">突击步枪</span>
+                        <h3>AUG 突击步枪</h3>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 80%;"></div></div>
+                                <span>威力</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 95%;"></div></div>
+                                <span>精准</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 85%;"></div></div>
+                                <span>稳定</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-card">查看详细数据</a>
+                    </div>
+                </div>
+
+                <!-- 武器卡片 3 -->
+                <div class="weapon-card">
+                    <img src="https://picsum.photos/seed/deagle/400/300.jpg" alt="Desert Eagle" class="weapon-img">
+                    <div class="weapon-info">
+                        <span class="weapon-category">手枪</span>
+                        <h3>Desert Eagle</h3>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 100%;"></div></div>
+                                <span>威力</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 50%;"></div></div>
+                                <span>精准</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 40%;"></div></div>
+                                <span>稳定</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-card">查看详细数据</a>
+                    </div>
+                </div>
+
+                <!-- 武器卡片 4 -->
+                <div class="weapon-card">
+                    <img src="https://picsum.photos/seed/sniper/400/300.jpg" alt="AWP 狙击枪" class="weapon-img">
+                    <div class="weapon-info">
+                        <span class="weapon-category">狙击枪</span>
+                        <h3>AWP 狙击枪</h3>
+                        <div class="weapon-stats">
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 100%;"></div></div>
+                                <span>威力</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 90%;"></div></div>
+                                <span>精准</span>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-bar"><div class="stat-fill" style="width: 30%;"></div></div>
+                                <span>稳定</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-card">查看详细数据</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 玩家社区 -->
+    <section id="community" class="container">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>玩家社区</h2>
+                <p>最新攻略、赛事资讯与大神教学分享</p>
+            </div>
+            <a href="#" class="section-more">进入论坛 &rarr;</a>
+        </div>
+        <div class="community-layout">
+            <div class="article-list">
+                <article class="article-item">
+                    <img src="https://picsum.photos/seed/guide1/200/150.jpg" alt="攻略封面" class="article-thumb">
+                    <div class="article-content">
+                        <a href="#" class="article-title">爆破模式进阶：如何利用烟雾弹进行战术突围</a>
+                        <p class="article-excerpt">本文将详细解析烟雾弹的投掷点位与时机，帮助玩家在爆破模式中建立优势，掌握地图控制权。</p>
+                        <div class="article-meta">
+                            <span>作者：战术大师</span>
+                            <span>发布于：2小时前</span>
+                            <span>评论：32</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="article-item">
+                    <img src="https://picsum.photos/seed/guide2/200/150.jpg" alt="攻略封面" class="article-thumb">
+                    <div class="article-content">
+                        <a href="#" class="article-title">AWP狙击手生存指南：预瞄与身法技巧</a>
+                        <p class="article-excerpt">作为队伍的狙击手，如何在不被对方近身的情况下发挥最大作用？本文分享高阶狙击手必备技巧。</p>
+                        <div class="article-meta">
+                            <span>作者：神枪手</span>
+                            <span>发布于：1天前</span>
+                            <span>评论：89</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="article-item">
+                    <img src="https://picsum.photos/seed/guide3/200/150.jpg" alt="攻略封面" class="article-thumb">
+                    <div class="article-content">
+                        <a href="#" class="article-title">新手必读：创世兵魂职业选择与定位解析</a>
+                        <p class="article-excerpt">刚入坑的新手玩家如何快速上手？了解不同职业的定位与技能搭配，找到最适合你的战斗风格。</p>
+                        <div class="article-meta">
+                            <span>作者：新手引导员</span>
+                            <span>发布于：3天前</span>
+                            <span>评论：156</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <aside>
+                <div class="sidebar-widget">
+                    <h4 class="widget-title">热门话题</h4>
+                    <ul class="hot-list">
+                        <li><a href="#">S12赛季排位冲分攻略</a> <span class="hot-num">01</span></li>
+                        <li><a href="#">新版本武器平衡性调整</a> <span class="hot-num">02</span></li>
+                        <li><a href="#">职业联赛总决赛观赛指南</a> <span class="hot-num">03</span></li>
+                        <li><a href="#">如何快速提升枪法水平</a> <span class="hot-num">04</span></li>
+                        <li><a href="#">战队招募与组建技巧</a> <span class="hot-num">05</span></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget">
+                    <h4 class="widget-title">游戏下载</h4>
+                    <p style="color:var(--text-muted); font-size:14px; margin-bottom:15px;">支持Windows PC与主流移动端，安全无毒，快速安装。</p>
+                    <button class="btn-primary" style="width:100%;">立即下载客户端</button>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>常见问题 (FAQ)</h2>
+                    <p>关于游戏账号、充值与安全设置的解答</p>
+                </div>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">游戏需要下载客户端吗？支持哪些平台？</div>
+                    <div class="faq-answer">是的，创世兵魂提供高性能PC客户端版本。目前支持Windows 7及以上操作系统，并推出了适配移动端的网页版与APP，方便玩家随时随地体验。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">账号被盗或密码错误怎么办？</div>
+                    <div class="faq-answer">请立即通过官网的“安全中心”功能，使用绑定的手机号或邮箱进行密码重置或账号申诉。请勿在非官方渠道输入账号密码。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">游戏内的充值如何到账？</div>
+                    <div class="faq-answer">充值成功后，游戏币通常会在1-3分钟内自动到账。如遇延迟，请检查网络连接或联系客服查询。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何举报恶意玩家？</div>
+                    <div class="faq-answer">在战斗结算界面或游戏内聊天栏，点击玩家头像选择“举报”选项，选择违规类型并提交截图证据即可。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span>CS</span>创世兵魂
+                    </a>
+                    <p>致力于为玩家提供最优质的FPS游戏体验，打造专业的游戏资讯与攻略平台。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>游戏指南</h4>
+                    <ul>
+                        <li><a href="#">新手入门</a></li>
+                        <li><a href="#">职业介绍</a></li>
+                        <li><a href="#">武器图鉴</a></li>
+                        <li><a href="#">地图攻略</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>玩家支持</h4>
+                    <ul>
+                        <li><a href="#">账号安全</a></li>
+                        <li><a href="#">客服中心</a></li>
+                        <li><a href="#">玩家协议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">官方微博</a></li>
+                        <li><a href="#">官方微信</a></li>
+                        <li><a href="#">玩家QQ群</a></li>
+                        <li><a href="#">Discord社区</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 创世兵魂玩家社区 版权所有. 本页面为概念设计展示，非官方网站。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的FAQ折叠效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+
+            // 导航栏滚动效果
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
+                } else {
+                    header.style.boxShadow = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+  </html>
